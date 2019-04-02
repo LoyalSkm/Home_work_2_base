@@ -5,7 +5,19 @@ print('''Задавай какую хочешь высоту НО ПОМНИ с�
 ''')
 n = int(input("Высота: "))
 d = int(input("Ширина: "))
-
-for i in range(1, n+1):
-    s = "*"*i
-    print(s)
+s = [n, d]
+bl = max(s)/min(s)
+bh = min(s)/max(s)
+print("*")
+if n == d:
+    for i in range(2, n+1):
+        s = "*"*round(i)
+        print(s)
+if n < d:
+    for i in range(2, n+1):
+        s = "*"*round(i*bl)
+        print(s)
+if n > d:
+    for i in range(2, n+1):
+        s = "*"*round(i*bh)
+        print(s)
