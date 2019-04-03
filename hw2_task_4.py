@@ -2,23 +2,39 @@ print('''   4. При помощи циклов и логики реализов
 пользователь задаёт высоту и ширину(в количестве элементов).
 ''')
 
-n = int(input("Высота: "))
-d = int(input("Ширина: "))
-if n % 2 == 0:
-    n -= 1
-for i in range(1, n + 1, 2):
+while True:
+    try:
+        n = int(input("Высота: "))
+        d = int(input("Ширина: "))
+        break
+    except ValueError:
+        print("Ведите Целое число")
+s = [n, d]
+p = 0
+r = max(s)
+bl = max(s)/min(s)
+bh = min(s)/max(s)
+if n < d:
+    p = bh
+elif n > d:
+    p = round(bl)
+elif n == d:
+    p = 1
+print(p) #коефициент по которому потом выщитуются *
+
+for i in range(1, n, 2): #* на увеличение
     if i>=d:
-        i=d
-        s = "*"*i
-        print(s.center(d))
+        i = d
+        s = "*" * round(i*p)
+        print(s.center(r))
     else:
-        s = "*" * i
-        print(s.center(d))
-for i in range(n-2, 0, -2):
+        s = "*" * round(p*i)
+        print(s.center(r))
+for i in range(n, 0, -2): #* на уменьшение
     if i>=d:
-        i=d
-        s = "*"*i
-        print(s.center(d))
+        i = d
+        s = "*" * round(i*p)
+        print(s.center(r))
     else:
-        s = "*" * i
-        print(s.center(d))
+        s = "*" * round(p*i)
+        print(s.center(r))

@@ -2,24 +2,40 @@ print('''	5. При помощи циклов и логики реализова
 пользователь задаёт высоту и ширину(в количестве элементов).
 Примечание: числа, вводимые пользователем должны быть чётными для корректной -"отрисовки".
 ''')
+while True:
+    try:
+        H = int(input("Высота: "))
+        L = int(input("Ширина: "))
+        break
+    except ValueError:
+        print("Ведите Целое число")
 
-n = int(input("Высота: "))
-d = int(input("Ширина: "))
-if n % 2 == 0:
-    n -= 1
-for i in range(n, 1, -2):
-    if i>=d:
-        i=d
-        s = "*"*i
-        print(s.center(d))
+s = [H, L]
+bl = max(s)/min(s)
+bh = min(s)/max(s)
+
+if H < L:
+    p = bh
+elif H > L:
+    p = bl
+elif H == L:
+    p = 1
+
+for i in range(H, 1, -2):
+    if i>=L:
+        i = L
+        s = "*" * round(i*p)
+        print(s.center(L))
     else:
-        s = "*" * i
-        print(s.center(d))
-for i in range(1, n+1, 2):
-    if i>=d:
-        i=d
-        s = "*"*i
-        print(s.center(d))
+        s = "*" * round(p*i)
+        print(s.center(L))
+
+for i in range(1, H+1, 2):
+    if i>=L:
+        i = L
+        s = "*" * round(i*p)
+        print(s.center(L))
     else:
-        s = "*" * i
-        print(s.center(d))
+        s = "*" * round(p*i)
+        print(s.center(L))
+
