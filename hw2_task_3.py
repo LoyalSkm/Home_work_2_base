@@ -34,7 +34,5 @@ poz = -1                                      #переменная старта
 for i in range(1, n+1):
     poz += 1
     kol = int(round(koef[poz]))               #типо позиция в списках list_L или list_LL
-    # print("*" * kol)
-    cen = ("*" * kol)                          #строим трыкутнык)
-    print(cen.center(r))
+    print("*" * kol)
 

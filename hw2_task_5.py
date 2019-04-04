@@ -10,9 +10,14 @@ while True:
     try:
         n = int(input("Высота: "))
         d = float(input("Ширина: "))
+        if n == 0 or d == 0:
+            print("значения не могут быть 0")
         break
+
     except ValueError:
         print("Ведите Целое число")
+
+
 s = [n, d]
 bl = max(s)/min(s)
 bh = min(s)/max(s)
