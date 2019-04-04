@@ -15,11 +15,16 @@ while True:
 s = [n, d]
 bl = max(s)/min(s)   #коефициент для случая когда высота больше ширины
 bh = min(s)/max(s)   #когда ширина больше высоты
+max = max(s)
+if max%2 == 0:
+    r = int(max)
+else:
+    r = int(max+1)
 
 list_L = [X for X in numpy.arange(1, d+1, bl)] #список для случая высоты больше ширины
 list_H = [Y for Y in numpy.arange(1, d+1, bh)] #навпакы)
-
-
+print(list_L)
+print(list_H)
 if n<=d:                                      #список для обоих случаев
     koef = list_L
 elif n>d:
@@ -29,18 +34,7 @@ poz = -1                                      #переменная старта
 for i in range(1, n+1):
     poz += 1
     kol = int(round(koef[poz]))               #типо позиция в списках list_H или list_L
-    print("*" * kol)                          #строим трыкутнык)
+    # print("*" * kol)
+    cen = ("*" * kol)                          #строим трыкутнык)
+    print(cen.center(r))
 
-
-# import numpy
-#
-# print("Printing float range with numpy.arange()")
-# print("Example one")
-# for i in numpy.arange(0, 5.5, 0.5):
-#     print(i, end=', ')
-# print("\nExample two")
-# for i in numpy.arange(5.5, 15.5, 2.5):
-#     print(i, end=', ')
-# print("\nExample Three")
-# for i in numpy.arange(-2.5, 2.5, 0.5):
-#     print(i, end=', ')
