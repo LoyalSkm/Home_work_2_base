@@ -2,40 +2,65 @@ print('''	5. При помощи циклов и логики реализова
 пользователь задаёт высоту и ширину(в количестве элементов).
 Примечание: числа, вводимые пользователем должны быть чётными для корректной -"отрисовки".
 ''')
+
+
+import numpy
+
 while True:
     try:
-        H = int(input("Высота: "))
-        L = int(input("Ширина: "))
+        n = int(input("Высота: "))
+        d = float(input("Ширина: "))
         break
     except ValueError:
         print("Ведите Целое число")
-
-s = [H, L]
+s = [n, d]
 bl = max(s)/min(s)
 bh = min(s)/max(s)
 
-if H < L:
-    p = bh
-elif H > L:
-    p = bl
-elif H == L:
-    p = 1
+max = max(s)
 
-for i in range(H, 1, -2):
-    if i>=L:
-        i = L
-        s = "*" * round(i*p)
-        print(s.center(L))
-    else:
-        s = "*" * round(p*i)
-        print(s.center(L))
+if max%2 == 0:
+    r = int(max)
+else:
+    r = int(max+1)
 
-for i in range(1, H+1, 2):
-    if i>=L:
-        i = L
-        s = "*" * round(i*p)
-        print(s.center(L))
-    else:
-        s = "*" * round(p*i)
-        print(s.center(L))
+if n==d or (n%2 == 0):
+    poz1_end = round((1/2)*n)
+    poz2_start = poz1_end
+elif n>d or n<d:
+    poz1_end = round(((1 / 2) * n) - 0.5)
+    poz2_start = round(((1 / 2) * n) + 0.5)
+# print(poz1_end)
+# print(poz2_start)
+
+list_L = [X for X in numpy.arange(1, d+1, bl)]
+list_H = [Y for Y in numpy.arange(1, d+1, bh)]
+# print(list_L)
+# print(list_H)
+
+if n<=d:
+    koef = list_L
+elif n>d:
+    koef = list_H
+# print(koef)
+poz = -1
+
+poz = poz2_start
+for i in range(n-1, 1, -1):
+    poz -= 1
+    kol = int(round(koef[poz]))
+    # print("*" * kol)
+    cen = ("*" * kol)
+    print(cen.center(r))
+    if i == poz1_end:
+        break
+for i in range(1, n):
+    poz += 1
+    kol = int(round(koef[poz]))
+    # print("*" * kol)
+    cen = ("*" * kol)
+    print(cen.center(r))
+    if i == poz1_end:
+        break
+
 
