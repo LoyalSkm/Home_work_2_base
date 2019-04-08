@@ -11,7 +11,7 @@ while True:
         d = float(input("Ширина: "))
         break
     except ValueError:
-        print("Ведите Целое число")
+        print("Введите Целое число")
 s = [n, d]
 bl = max(s)/min(s)   #коефициент для случая когда высота больше ширины
 bh = min(s)/max(s)   #когда ширина больше высоты
